@@ -40,7 +40,7 @@ public class ControllerRegister {
                 fname.setText(oldValue);
             else if(!newValue.matches("[a-zA-Z\\-]"))
                 fname.setText(newValue.replaceAll("[^a-zA-Z\\-]", ""));
-        });
+         });
 
         lname.textProperty().addListener((observable, oldValue, newValue) -> {
             if(lname.getText().length() > 40)
