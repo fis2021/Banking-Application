@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:id="mainGrid" fx:controller="org.example.ControllerLogin" stylesheets="@../../org.styling/styleLogin.css"
+          xmlns:fx="http://javafx.com/fxml" alignment="CENTER" vgap="10">
+    <ImageView id="logo" GridPane.rowIndex="0" GridPane.columnIndex="0" fitWidth="400" fitHeight="200">
+        <Image url="@../../org.resources/banklogo_400x200.png"/>
+    </ImageView>
+    <GridPane fx:id="secondaryGrid" hgap="10" vgap="15" alignment="CENTER"
+              GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <padding>
+            <Insets top="20" left="20" bottom="25" right="25"/>
+        </padding>
+        <TextField fx:id="username" promptText="Username"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <PasswordField fx:id="password" promptText="Password"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <Button fx:id="login" text="LOGIN" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Button fx:id="register" text="REGISTER" onAction="#handleRegister"
+                GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+</GridPane>
+

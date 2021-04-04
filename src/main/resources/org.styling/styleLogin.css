@@ -1,0 +1,50 @@
+#mainGrid { -fx-background-color: rgb(20, 22, 27);
+    /* -fx-background-image: url("/org.resources/background1.jpg"); */
+}
+
+#secondaryGrid {
+    -fx-pref-width: 400px;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-width: 1px;
+    -fx-border-color: gray;
+    -fx-border-radius: 5px;
+}
+
+.text-field {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 40px;
+    -fx-font-size: 18;
+}
+
+.button {
+    -fx-pref-width: 170px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 22;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+#register {
+    -fx-background-color: linear-gradient(to right, rgb(74, 243, 93), rgb(25, 182, 197));
+}
+
+#register:hover {
+    -fx-border-width: 1;
+    -fx-border-radius: 3px;
+    -fx-border-color: linear-gradient(to right, rgb(74, 243, 93), rgb(25, 182, 197));
+    -fx-background-radius: 3px;
+    -fx-background-color: white;
+    -fx-text-fill: linear-gradient(to right, rgb(74, 243, 93), rgb(25, 182, 197));
+}
+
+#login { -fx-background-color: linear-gradient(to right, rgb(2, 35, 148), rgb(23, 178, 200)); }
+
+#login:hover {
+    -fx-border-width: 1;
+    -fx-border-radius: 3px;
+    -fx-border-color: linear-gradient(to right, rgb(2, 35, 148), rgb(23, 178, 200));
+    -fx-background-radius: 3px;
+    -fx-background-color: white;
+    -fx-text-fill: linear-gradient(to right, rgb(2, 35, 148), rgb(23, 178, 200));
+}

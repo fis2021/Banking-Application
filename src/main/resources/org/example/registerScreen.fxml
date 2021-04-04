@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane fx:id="mainGrid" fx:controller="org.example.ControllerRegister" vgap="10" hgap="220"
+          stylesheets="@../../org.styling/styleRegister.css" xmlns:fx="http://javafx.com/fxml">
+    <padding>
+        <Insets top="15" bottom="15" left="40" right="40"/>
+    </padding>
+    <Label id="title" text="Personal Information" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <GridPane id="secondaryGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" vgap="10" hgap="10">
+        <padding>
+            <Insets top="10" bottom="10" left="15" right="15"/>
+        </padding>
+        <TextField fx:id="fname" promptText="First Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="lname" promptText="Last Name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <TextField fx:id="pin" promptText="PIN" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <DatePicker fx:id="birthdate" promptText="Birthdate"
+                    GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <fx:define>
+            <ToggleGroup fx:id="gender"/>
+        </fx:define>
+        <RadioButton fx:id="male" text="Male" toggleGroup="$gender" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <RadioButton fx:id="female" text="Female" toggleGroup="$gender" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <TextField fx:id="address" promptText="Address"
+                   GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <TextField fx:id="zip" promptText="ZIP" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    </GridPane>
+    <Label id="title" text="Account Information" alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <GridPane id="secondaryGrid" GridPane.rowIndex="3" GridPane.columnIndex="0" vgap="10" hgap="10">
+        <padding>
+            <Insets top="10" bottom="10" left="15" right="15"/>
+        </padding>
+        <TextField fx:id="cardnumber" promptText="Card Number"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <TextField fx:id="email" promptText="Email Address"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <TextField fx:id="username" promptText="Username"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <PasswordField fx:id="password" promptText="Password" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="repassword" promptText="Confirm Password" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+    <GridPane GridPane.rowIndex="4" GridPane.columnIndex="0" hgap="10">
+        <Button fx:id="register" text="REGISTER" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Button fx:id="back" text="BACK" onAction="#handleBack" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    </GridPane>
+    <ImageView fitWidth="400" fitHeight="200" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.rowSpan="5">
+        <Image url="@../../org.resources/banklogo_400x200.png"/>
+    </ImageView>
+</GridPane>
