@@ -38,15 +38,15 @@ public class ControllerRegister {
         fname.textProperty().addListener((observable, oldValue, newValue) -> {
             if(fname.getText().length() > 40)
                 fname.setText(oldValue);
-            else if(!newValue.matches("\\sa-zA-Z"))
-                fname.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
-        });
+            else if(!newValue.matches("[a-zA-Z\\-]"))
+                fname.setText(newValue.replaceAll("[^a-zA-Z\\-]", ""));
+         });
 
         lname.textProperty().addListener((observable, oldValue, newValue) -> {
             if(lname.getText().length() > 40)
                 lname.setText(oldValue);
-            else if(!newValue.matches("\\sa-zA-Z"))
-                lname.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            else if(!newValue.matches("[a-zA-Z\\-]"))
+                lname.setText(newValue.replaceAll("[^a-zA-Z\\-]", ""));
         });
 
         pin.textProperty().addListener((observable, oldValue, newValue) -> {
