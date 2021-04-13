@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<GridPane fx:id="mainGrid" fx:controller="org.example.ControllerDashboard"
+          stylesheets="@../../org.styling/styleDashboard.css" xmlns:fx="http://javafx.com/fxml">
+    <GridPane fx:id="secondaryGrid" hgap="10" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <padding>
+            <Insets top="50" bottom="50"/>
+        </padding>
+        <ImageView id="logo" GridPane.rowIndex="0" GridPane.columnIndex="0" fitWidth="300" fitHeight="200">
+            <Image url="@../../org.resources/banklogo_300x200_white.png"/>
+        </ImageView>
+        <GridPane id="buttonGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" prefWidth="300">
+            <padding>
+                <Insets top="40"/>
+            </padding>
+            <Button fx:id="dashboard" text="Dashboard" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <Image url="@../../org.resources/dashboard_icon_24x24.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="notifications" text="Notifications" GridPane.rowIndex="2" GridPane.columnIndex="0">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <Image url="@../../org.resources/notifications_icon_24x24.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="deposit" text="Deposit" GridPane.rowIndex="3" GridPane.columnIndex="0">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <Image url="@../../org.resources/deposit_24x24.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="withdraw" text="Withdraw" GridPane.rowIndex="4" GridPane.columnIndex="0">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <Image url="@../../org.resources/withdraw_icon_24x24.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="transfer" text="Transfer" GridPane.rowIndex="5" GridPane.columnIndex="0">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <Image url="@../../org.resources/transfer_icon_24x24.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="privacyPolicy" text="Privacy Policy" GridPane.rowIndex="6" GridPane.columnIndex="0">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <Image url="@../../org.resources/privacypolicy_24x24.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="logout" text="Logout" GridPane.rowIndex="7" GridPane.columnIndex="0">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <Image url="@../../org.resources/logout_icon_24x24.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </GridPane>
+    </GridPane>
+    <!-- Dashboard Grid -->
+    <GridPane fx:id="dashboardGrid" hgap="20" vgap="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <padding>
+            <Insets top="20" bottom="20" left="50" right="50"/>
+        </padding>
+        <GridPane id="eurProfile" GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="280" height="5" fill="rgb(25, 186, 189);"/>
+            <Label id="titleProfile" text="EUR" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="eurAmountProfile" text="0.0 €" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <GridPane id="insideProfile" GridPane.rowIndex="3" GridPane.columnIndex="0" hgap="20">
+                <padding>
+                    <Insets top="5" left="10" right="10"/>
+                </padding>
+                <Label id="transactionsDataLabel" text="Awaiting Response"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="totalTransfersEUR" id="transactionsDataLabelDetails" text="Total transfers: #"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="amountAwaitingTransferEUR" id="transactionsDataAmount" text="### €"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label id="transactionsDataLabel" text="Total Withdrawn"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="totalWithdrawsEUR" id="transactionsDataLabelDetails" text="Total withdraws: #"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="amountTotalWithdrawnEUR" id="transactionsDataAmount" text="### €"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label id="transactionsDataLabel" text="Total Deposited"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label fx:id="totalDepositsEUR" id="transactionsDataLabelDetails" text="Total deposits: #"
+                       GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <Label fx:id="amountTotalDepositedEUR" id="transactionsDataAmount" text="### €"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="usdProfile" GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="280" height="5" fill="rgb(25, 186, 189);"/>
+            <Label id="titleProfile" text="USD" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="usdAmountProfile" text="0.0 $" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <GridPane id="insideProfile" GridPane.rowIndex="3" GridPane.columnIndex="0" hgap="20">
+                <padding>
+                    <Insets top="5" left="10" right="10"/>
+                </padding>
+                <Label id="transactionsDataLabel" text="Awaiting Response"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="totalTransfersUSD" id="transactionsDataLabelDetails" text="Total transfers: #"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="amountAwaitingTransferUSD" id="transactionsDataAmount" text="### $"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label id="transactionsDataLabel" text="Total Withdrawn"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="totalWithdrawsUSD" id="transactionsDataLabelDetails" text="Total withdraws: #"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="amountTotalWithdrawnUSD" id="transactionsDataAmount" text="### $"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label id="transactionsDataLabel" text="Total Deposited"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label fx:id="totalDepositsUSD" id="transactionsDataLabelDetails" text="Total deposits: #"
+                       GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <Label fx:id="amountTotalDepositedUSD" id="transactionsDataAmount" text="### $"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="ronProfile" GridPane.rowIndex="0" GridPane.columnIndex="2" hgap="10">
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="280" height="5" fill="rgb(25, 186, 189);"/>
+            <Label id="titleProfile" text="RON" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="ronAmountProfile" text="0.0 L" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <GridPane id="insideProfile" GridPane.rowIndex="3" GridPane.columnIndex="0" hgap="20">
+                <padding>
+                    <Insets top="5" left="10" right="10"/>
+                </padding>
+                <Label id="transactionsDataLabel" text="Awaiting Response"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="totalTransfersRON" id="transactionsDataLabelDetails" text="Total transfers: #"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="amountAwaitingTransferRON" id="transactionsDataAmount" text="### L"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label id="transactionsDataLabel" text="Total Withdrawn"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="totalWithdrawsRON" id="transactionsDataLabelDetails" text="Total withdraws: #"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="amountTotalWithdrawnRON" id="transactionsDataAmount" text="### L"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label id="transactionsDataLabel" text="Total Deposited"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label fx:id="totalDepositsRON" id="transactionsDataLabelDetails" text="Total deposits: #"
+                       GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <Label fx:id="amountTotalDepositedRON" id="transactionsDataAmount" text="### L"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <TableView fx:id="transactionsTableView" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3">
+            <columns>
+                <TableColumn fx:id="transactionType" text="TYPE" prefWidth="145" resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionEmitor" text="TO" prefWidth="145" resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionReceiver" text="FROM" prefWidth="145" resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionAmount" text="AMOUNT" prefWidth="145" resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionCurrency" text="CURRENCY" prefWidth="145" resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionDate" text="DATE" prefWidth="155" resizable="false" sortable="false"/>
+            </columns>
+        </TableView>
+    </GridPane>
+    <!-- ############## -->
+</GridPane>

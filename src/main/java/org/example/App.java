@@ -15,7 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("loginScreen"), 1280, 720);
+        scene = new Scene(loadFXML("dashboardScreen"), 1280, 720);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -29,8 +29,6 @@ public class App extends Application {
         return new FXMLLoader(App.class.getResource(fxml + ".fxml")).load();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
+    public static void main(String[] args) { launch(); }
 
 }
