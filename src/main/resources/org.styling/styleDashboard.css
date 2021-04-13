@@ -1,0 +1,115 @@
+#secondaryGrid {
+    -fx-background-color: rgb(20, 22, 27);
+    -fx-pref-width: 300px;
+    -fx-pref-height: 720px;
+}
+
+#dashboardGrid {
+    -fx-pref-width: 980px;
+    -fx-pref-height: 720px;
+    -fx-background-color: rgb(42, 65, 88);
+}
+
+#eurProfile, #usdProfile, #ronProfile {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 250px;
+    -fx-background-color: rgb(20, 22, 27);
+}
+
+#titleProfile {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 40px;
+    -fx-alignment: CENTER;
+    -fx-font-size: 34;
+    -fx-font-weight: BOLD;
+    -fx-text-fill: rgb(200, 200, 200);
+}
+
+#insideProfile {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 170;
+    -fx-border-width: 1px;
+    -fx-border-color: rgb(20, 22, 27);
+    -fx-background-color: rgb(220, 220, 220);
+}
+
+#eurAmountProfile, #usdAmountProfile, #ronAmountProfile {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 30px;
+    -fx-alignment: CENTER;
+    -fx-padding: -5 0 -5 0;
+    -fx-font-size: 16;
+    -fx-font-weight: BOLD;
+    -fx-text-fill: rgb(200, 200, 200);
+}
+
+#transactionsDataLabel, #transactionsDataAmount {
+    -fx-font-size: 13;
+    -fx-font-weight: BOLD;
+    -fx-text-fill: rgb(20, 22, 27);
+    -fx-pref-width: 120px;
+    -fx-pref-height: 30px;
+    -fx-padding: 10px 0px 0px 0px;
+
+    /*-fx-border-color: green;
+    -fx-border-width: 1px;*/
+}
+
+#transactionsDataAmount { -fx-alignment: BOTTOM_RIGHT; }
+
+#transactionsDataLabelDetails {
+    -fx-font-size: 11;
+    -fx-font-weight: BOLD;
+    -fx-text-fill: rgb(60, 62, 67);
+    -fx-pref-width: 120px;
+}
+
+.table-view {
+    -fx-background-image: url("/org.resources/dashboard_table_background_680x400.png");
+}
+
+.table-view .table-cell {
+    -fx-background-color: green;
+    -fx-border-color: blue;
+    -fx-text-fill: rgb(200, 200, 200);
+}
+
+.table-view .column-header {
+    -fx-background-color: rgb(20, 22, 27);
+    -fx-border-width: 3px 0px 0px 0px;
+    -fx-border-color: rgb(25, 186, 189);
+    -fx-pref-height: 40px;
+    -fx-text-fill: rgb(200, 200, 200);
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: rgb(200, 200, 200);
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: green;
+}
+
+.table-view .scroll-bar {
+    -fx-background-color: pink;
+}
+
+.button {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 44px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 18;
+    -fx-font-weight: BOLD;
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(200, 200, 200);
+    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-color: transparent;
+}
+
+.button:hover {
+    -fx-border-width: 1px 0px 1px 5px;
+    -fx-border-color: rgb(200, 200, 200);
+    -fx-background-color: rgb(38, 39, 44);
+}

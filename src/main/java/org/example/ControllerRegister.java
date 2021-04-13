@@ -1,8 +1,6 @@
 package org.example;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
 import javafx.scene.control.*;
 
 import java.io.IOException;
@@ -114,6 +112,4 @@ public class ControllerRegister {
     }
 
     public void handleBack() throws IOException { App.changeScene(back, "loginScreen"); }
-
-
 }
