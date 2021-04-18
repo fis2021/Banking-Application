@@ -9,6 +9,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <GridPane fx:id="mainGrid" fx:controller="org.example.ControllerDashboard"
           stylesheets="@../../org.styling/styleDashboard.css" xmlns:fx="http://javafx.com/fxml">
     <GridPane fx:id="secondaryGrid" hgap="10" GridPane.rowIndex="0" GridPane.columnIndex="0">
@@ -22,49 +26,56 @@
             <padding>
                 <Insets top="40"/>
             </padding>
-            <Button fx:id="dashboard" text="Dashboard" GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <Button fx:id="dashboard" text="Dashboard" onAction="#handleDashboard"
+                    GridPane.rowIndex="1" GridPane.columnIndex="0">
                 <graphic>
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../../org.resources/dashboard_icon_24x24.png"/>
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="notifications" text="Notifications" GridPane.rowIndex="2" GridPane.columnIndex="0">
+            <Button fx:id="notifications" text="Notifications" onAction="#handleNotifications"
+                    GridPane.rowIndex="2" GridPane.columnIndex="0">
                 <graphic>
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../../org.resources/notifications_icon_24x24.png"/>
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="deposit" text="Deposit" GridPane.rowIndex="3" GridPane.columnIndex="0">
+            <Button fx:id="deposit" text="Deposit" onAction="#handleDeposit"
+                    GridPane.rowIndex="3" GridPane.columnIndex="0">
                 <graphic>
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../../org.resources/deposit_24x24.png"/>
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="withdraw" text="Withdraw" GridPane.rowIndex="4" GridPane.columnIndex="0">
+            <Button fx:id="withdraw" text="Withdraw" onAction="#handleWithdraw"
+                    GridPane.rowIndex="4" GridPane.columnIndex="0">
                 <graphic>
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../../org.resources/withdraw_icon_24x24.png"/>
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="transfer" text="Transfer" GridPane.rowIndex="5" GridPane.columnIndex="0">
+            <Button fx:id="transfer" text="Transfer" onAction="#handleTransfer"
+                    GridPane.rowIndex="5" GridPane.columnIndex="0">
                 <graphic>
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../../org.resources/transfer_icon_24x24.png"/>
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="privacyPolicy" text="Privacy Policy" GridPane.rowIndex="6" GridPane.columnIndex="0">
+            <Button fx:id="privacyPolicy" text="Privacy Policy" onAction="#handlePrivacyPolicy"
+                    GridPane.rowIndex="6" GridPane.columnIndex="0">
                 <graphic>
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../../org.resources/privacypolicy_24x24.png"/>
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="logout" text="Logout" GridPane.rowIndex="7" GridPane.columnIndex="0">
+            <Button fx:id="logout" text="Logout" onAction="#handleLogout"
+                    GridPane.rowIndex="7" GridPane.columnIndex="0">
                 <graphic>
                     <ImageView fitWidth="24" fitHeight="24">
                         <Image url="@../../org.resources/logout_icon_24x24.png"/>
@@ -73,6 +84,7 @@
             </Button>
         </GridPane>
     </GridPane>
+
     <!-- Dashboard Grid -->
     <GridPane fx:id="dashboardGrid" hgap="20" vgap="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
         <padding>
@@ -164,14 +176,255 @@
         </GridPane>
         <TableView fx:id="transactionsTableView" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3">
             <columns>
-                <TableColumn fx:id="transactionType" text="TYPE" prefWidth="145" resizable="false" sortable="false"/>
-                <TableColumn fx:id="transactionEmitor" text="TO" prefWidth="145" resizable="false" sortable="false"/>
-                <TableColumn fx:id="transactionReceiver" text="FROM" prefWidth="145" resizable="false" sortable="false"/>
-                <TableColumn fx:id="transactionAmount" text="AMOUNT" prefWidth="145" resizable="false" sortable="false"/>
-                <TableColumn fx:id="transactionCurrency" text="CURRENCY" prefWidth="145" resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionType" text="TYPE" prefWidth="145"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionEmitor" text="TO" prefWidth="145"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionReceiver" text="FROM" prefWidth="145"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionAmount" text="AMOUNT" prefWidth="145"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="transactionCurrency" text="CURRENCY" prefWidth="145"
+                             resizable="false" sortable="false"/>
                 <TableColumn fx:id="transactionDate" text="DATE" prefWidth="155" resizable="false" sortable="false"/>
             </columns>
         </TableView>
     </GridPane>
     <!-- ############## -->
+
+    <!-- Notifications -->
+    <GridPane fx:id="notificationsGrid" visible="false" GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <padding>
+            <Insets top="20" bottom="20" left="50" right="50"/>
+        </padding>
+        <TableView fx:id="notificationsTableView" prefHeight="680" GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <columns>
+                <TableColumn fx:id="notificationSenderName" text="FROM" prefWidth="125"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="notificationSubject" text="SUBJECT" prefWidth="125"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="notificationType" text="TYPE" prefWidth="125" resizable="false" sortable="false"/>
+                <TableColumn fx:id="notificationAmount" text="AMOUNT" prefWidth="125"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="notificationCurrency" text="CURRENCY" prefWidth="125"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="notificationStatus" text="STATUS" prefWidth="125"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="notificationAction" text="ACTION" prefWidth="125"
+                             resizable="false" sortable="false"/>
+            </columns>
+        </TableView>
+    </GridPane>
+    <!-- ############## -->
+
+    <!-- Deposit -->
+    <GridPane fx:id="depositGrid" visible="false" vgap="15" hgap="20" GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <padding>
+            <Insets top="30" bottom="30" left="50" right="50"/>
+        </padding>
+        <GridPane id="insideDepositWithdrawGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <GridPane hgap="20" vgap="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="20" top="10"/>
+                </padding>
+                <Label id="titleDepositWithdraw" text="Sender"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                <Label id="fieldDepositWithdraw" text="Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="PIN" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Address" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Card Number" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label fx:id="nameDeposit" id="detailsFieldDepositWithdraw" text="Your Name"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label fx:id="pinDeposit" id="detailsFieldDepositWithdraw" text="Your PIN"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label fx:id="addressDeposit" id="detailsFieldDepositWithdraw" text="Your Address"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label fx:id="cardNumberDeposit" id="detailsFieldDepositWithdraw" text="Your Card Number"
+                   GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="insideDepositWithdrawGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <GridPane hgap="20" vgap="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="20" top="10"/>
+                </padding>
+                <Label id="titleDepositWithdraw" text="Recipient"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                <Label id="fieldDepositWithdraw" text="Company"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="URC"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Address"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="ZIP"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label id="detailsFieldDepositWithdraw" text="Intellij Banking"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldDepositWithdraw" text="2092086"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldDepositWithdraw" text="6333 W 3rd St, Los Angeles"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldDepositWithdraw" text="90036"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="insideDepositWithdrawGrid" hgap="20"
+                  GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <padding>
+                <Insets bottom="20"/>
+            </padding>
+            <GridPane hgap="20" vgap="20" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="10"/>
+                </padding>
+                <TextField fx:id="amountDeposit" promptText="Amount" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="currencyDeposit" id="currencyTransfer"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="EUR"/>
+                            <String fx:value="USD"/>
+                            <String fx:value="RON"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+                        <String fx:value="EUR"/>
+                    </value>
+                </ComboBox>
+                <Button fx:id="depositRequest" text="DEPOSIT" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane hgap="20" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Label id="contactWithdrawDeposit" text="Mircea Feder" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label id="contactWithdrawDeposit" text="Email: federmircea@gmail.com"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label id="contactWithdrawDeposit" text="Instagram: @feder.mircea"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label id="contactWithdrawDeposit" text="Ligius Matesoni" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label id="contactWithdrawDeposit" text="Email: ligiusm@yahoo.com"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label id="contactWithdrawDeposit" text="Instagram: @ligius.sorel"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+    </GridPane>
+    <!-- ####### -->
+
+    <!-- Withdraw -->
+    <GridPane fx:id="withdrawGrid" visible="false" vgap="15" hgap="20" GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <padding>
+            <Insets top="30" bottom="30" left="50" right="50"/>
+        </padding>
+        <GridPane id="insideDepositWithdrawGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <GridPane hgap="20" vgap="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="20" top="10"/>
+                </padding>
+                <Label id="titleDepositWithdraw" text="Sender"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                <Label id="fieldDepositWithdraw" text="Company"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="URC"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Address"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="ZIP"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label id="detailsFieldDepositWithdraw" text="Intellij Banking"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldDepositWithdraw" text="2092086"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldDepositWithdraw" text="6333 W 3rd St, Los Angeles"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldDepositWithdraw" text="90036"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="insideDepositWithdrawGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <GridPane hgap="20" vgap="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="20" top="10"/>
+                </padding>
+                <Label id="titleDepositWithdraw" text="Recipient"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                <Label id="fieldDepositWithdraw" text="Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="PIN" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Address" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Card Number" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label fx:id="nameWithdraw" id="detailsFieldDepositWithdraw" text="Your Name"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label fx:id="pinWithdraw" id="detailsFieldDepositWithdraw" text="Your PIN"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label fx:id="addressWithdraw" id="detailsFieldDepositWithdraw" text="Your Address"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label fx:id="cardNumberWithdraw" id="detailsFieldDepositWithdraw" text="Your Card Number"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="insideDepositWithdrawGrid" hgap="20"
+                  GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <padding>
+                <Insets bottom="20"/>
+            </padding>
+            <GridPane hgap="20" vgap="20" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="10"/>
+                </padding>
+                <TextField fx:id="amountWithdraw" promptText="Amount" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="currencyWithdraw" id="currencyTransfer"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="EUR"/>
+                            <String fx:value="USD"/>
+                            <String fx:value="RON"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+                        <String fx:value="EUR"/>
+                    </value>
+                </ComboBox>
+                <Button fx:id="withdrawRequest" text="WITHDRAW" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane hgap="20" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Label id="contactWithdrawDeposit" text="Mircea Feder" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label id="contactWithdrawDeposit" text="Email: federmircea@gmail.com"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label id="contactWithdrawDeposit" text="Instagram: @feder.mircea"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label id="contactWithdrawDeposit" text="Ligius Matesoni" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label id="contactWithdrawDeposit" text="Email: ligiusm@yahoo.com"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label id="contactWithdrawDeposit" text="Instagram: @ligius.sorel"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+    </GridPane>
+    <!-- ######## -->
+
+    <!-- Transfer -->
+    <GridPane fx:id="transferGrid" visible="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <!-- ######## -->
+
+    <!-- Privacy Policy -->
+    <GridPane fx:id="privacyPolicyGrid" visible="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <!-- ############## -->
+
 </GridPane>
