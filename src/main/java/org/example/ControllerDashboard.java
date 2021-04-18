@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 public class ControllerDashboard {
     @FXML
     GridPane dashboardGrid, notificationsGrid, depositGrid, withdrawGrid, transferGrid, privacyPolicyGrid;
-
+    @FXML
+    TextField amountDeposit, amountWithdraw, amountTransfer;
     private final ArrayList<GridPane> grids = new ArrayList<>();
 
     @FXML
@@ -23,6 +25,7 @@ public class ControllerDashboard {
     */
     public void initialize() {
         addAllGridsToArrayList();
+        addListeners();
     }
 
     /*
@@ -42,6 +45,29 @@ public class ControllerDashboard {
             App.changeScene(logout, "loginScreen");
 
 
+    }
+
+    public void addListeners() {
+        amountDeposit.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(amountDeposit.getText().length() > 20)
+                amountDeposit.setText(oldValue);
+            else if(!newValue.matches("\\d."))
+                amountDeposit.setText(newValue.replaceAll("[^\\d.]", ""));
+        });
+
+        amountWithdraw.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(amountWithdraw.getText().length() > 20)
+                amountWithdraw.setText(oldValue);
+            else if(!newValue.matches("\\d."))
+                amountWithdraw.setText(newValue.replaceAll("[^\\d.]", ""));
+        });
+
+        amountTransfer.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(amountTransfer.getText().length() > 20)
+                amountTransfer.setText(oldValue);
+            else if(!newValue.matches("\\d."))
+                amountTransfer.setText(newValue.replaceAll("[^\\d.]", ""));
+        });
     }
 
     /*
