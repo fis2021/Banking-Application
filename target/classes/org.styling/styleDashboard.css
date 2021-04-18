@@ -73,9 +73,12 @@
 }
 
 .table-view .table-cell {
-    -fx-background-color: green;
-    -fx-border-color: blue;
-    -fx-text-fill: rgb(200, 200, 200);
+    -fx-pref-height: 20px;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: rgb(20, 22, 27);
+    -fx-text-fill: rgb(20, 22, 27);
+    -fx-font-size: 13;
+    -fx-font-weight: BOLD;
 }
 
 .table-view .column-header {
@@ -90,14 +93,6 @@
     -fx-text-fill: rgb(200, 200, 200);
     -fx-font-weight: bold;
     -fx-font-size: 14;
-}
-
-.table-view .column-header-background .filler {
-    -fx-background-color: green;
-}
-
-.table-view .scroll-bar {
-    -fx-background-color: pink;
 }
 
 #dashboard, #notifications, #deposit, #withdraw, #transfer, #privacyPolicy, #logout {
@@ -121,7 +116,7 @@
 
 /* Deposit / Withdraw */
 
-#titleDepositWithdraw {
+#titleDepositWithdraw, #titleTransfer {
     -fx-pref-width: 940px;
     -fx-pref-height: 45px;
     -fx-font-size: 30;
@@ -132,7 +127,7 @@
     -fx-border-width: 0px 0px 3px 0px;
 }
 
-#fieldDepositWithdraw {
+#fieldDepositWithdraw, #fieldTransfer {
     -fx-pref-width: 410px;
     -fx-pref-height: 16px;
     -fx-font-size: 14;
@@ -140,25 +135,37 @@
     -fx-text-fill: rgb(200, 200, 200);
 }
 
-#detailsFieldDepositWithdraw {
+#detailsFieldDepositWithdraw, #detailsFieldTransfer {
     -fx-pref-width: 410px;
     -fx-pref-height: 16px;
     -fx-font-size: 14;
     -fx-text-fill: rgb(25, 186, 189);
 }
 
-#contactWithdrawDeposit {
+#textFieldTransfer {
+    -fx-pref-width: 410px;
+    -fx-pref-height: 16px;
+    -fx-text-fill: rgb(25, 186, 189);
+    -fx-prompt-text-fill: rgb(25, 186, 189);
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-background-color: transparent;
+    -fx-border-color: rgb(25, 186, 189);
+    -fx-padding: -5px 0px -5px 5px;
+    -fx-font-size: 14;
+}
+
+#contactWithdrawDeposit, #contactTransfer {
     -fx-pref-width: 410px;
     -fx-font-size: 11;
     -fx-font-weight: BOLD;
     -fx-text-fill: rgb(200, 200, 200);
 }
 
-#insideDepositWithdrawGrid {
+#insideDepositWithdrawGrid, #insideTransferGrid {
     -fx-background-color: rgb(20, 22, 27);
 }
 
-#amountDeposit, #amountWithdraw {
+#amountDeposit, #amountWithdraw, #amountTransfer {
     -fx-pref-width: 410px;
     -fx-pref-height: 40px;
     -fx-background-color: transparent;
@@ -180,7 +187,7 @@
     -fx-text-fill: rgb(20, 22, 27);
 }
 
-#depositRequest, #withdrawRequest {
+#depositRequest, #withdrawRequest, #transferRequest {
     -fx-pref-width: 410px;
     -fx-pref-height: 60px;
     -fx-background-color:  rgb(200, 200, 200);
@@ -190,9 +197,25 @@
     -fx-font-weight: BOLD;
 }
 
-#depositRequest:hover, #withdrawRequest:hover {
+#depositRequest:hover, #withdrawRequest:hover, #transferRequest:hover {
     -fx-background-color: rgb(25, 186, 189);
     -fx-text-fill: rgb(200, 200, 200);
 }
+
+.radio-button {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 25;
+    -fx-font-size: 16;
+    -fx-font-weight: BOLD;
+    -fx-text-fill: rgb(200, 200, 200);
+}
+
+.scroll-pane {
+    -fx-pref-width: 980px;
+    -fx-pref-height: 720px;
+    -fx-background: rgb(42, 65, 88);
+    -fx-background-color: rgb(42, 65, 88);
+}
+
 
 /* ****************** */

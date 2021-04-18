@@ -13,6 +13,9 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <GridPane fx:id="mainGrid" fx:controller="org.example.ControllerDashboard"
           stylesheets="@../../org.styling/styleDashboard.css" xmlns:fx="http://javafx.com/fxml">
     <GridPane fx:id="secondaryGrid" hgap="10" GridPane.rowIndex="0" GridPane.columnIndex="0">
@@ -420,11 +423,120 @@
     <!-- ######## -->
 
     <!-- Transfer -->
-    <GridPane fx:id="transferGrid" visible="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <GridPane fx:id="transferGrid" vgap="15" visible="false" GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <padding>
+            <Insets top="30" bottom="30" left="50" right="50"/>
+        </padding>
+        <GridPane id="insideTransferGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" hgap="20">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <GridPane hgap="20" vgap="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="20" top="10"/>
+                </padding>
+                <Label id="titleTransfer" text="Sender"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                <Label id="fieldDepositWithdraw" text="Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="PIN" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Email" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="CardNumber" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <Label id="detailsFieldTransfer" text="Your Name" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldTransfer" text="Your Pin" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldTransfer" text="Your Email" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label id="detailsFieldTransfer" text="Your card number" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="insideTransferGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" hgap="20">
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <GridPane hgap="20" vgap="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="20" top="10"/>
+                </padding>
+                <Label id="titleTransfer" text="Receiver"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                <Label id="fieldDepositWithdraw" text="Name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="PIN" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Email" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label id="fieldDepositWithdraw" text="Card Number" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="nameReceiverTransfer" id="textFieldTransfer" promptText="Receiver's Name"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <TextField fx:id="pinReceiverTransfer" id="textFieldTransfer" promptText="Receiver's PIN"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <TextField fx:id="emailReceiverTransfer" id="textFieldTransfer" promptText="Receiver's Email"
+                           GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <TextField fx:id="cardnumReceiverTransfer" id="textFieldTransfer" promptText="Receiver's Card Number"
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane id="insideTransferGrid" hgap="20"
+                  GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Rectangle GridPane.rowIndex="0" GridPane.columnIndex="0" width="880" height="5" fill="rgb(25, 186, 189);"/>
+            <padding>
+                <Insets bottom="20"/>
+            </padding>
+            <GridPane hgap="20" vgap="20" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <padding>
+                    <Insets left="10" right="10" bottom="10"/>
+                </padding>
+                <TextField fx:id="amountTransfer" promptText="Amount" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="currencyTransfer" id="currencyTransfer"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="EUR"/>
+                            <String fx:value="USD"/>
+                            <String fx:value="RON"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+                        <String fx:value="EUR"/>
+                    </value>
+                </ComboBox>
+
+                <fx:define>
+                    <ToggleGroup fx:id="transferType"/>
+                </fx:define>
+
+                <GridPane GridPane.rowIndex="2" GridPane.columnIndex="0" vgap="10" prefWidth="410" prefHeight="60" alignment="CENTER">
+                    <RadioButton fx:id="requestTransfer" text="Request" toggleGroup="$transferType"
+                                 GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <RadioButton fx:id="sendTRansfer" text="Send" toggleGroup="$transferType"
+                                 GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <Button fx:id="transferRequest" text="TRANSFER" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+        </GridPane>
+        <GridPane hgap="20" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Label id="contactTransfer" text="Mircea Feder" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label id="contactTransfer" text="Email: federmircea@gmail.com"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label id="contactTransfer" text="Instagram: @feder.mircea"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label id="contactTransfer" text="Ligius Matesoni" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label id="contactTransfer" text="Email: ligiusm@yahoo.com"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label id="contactTransfer" text="Instagram: @ligius.sorel"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+    </GridPane>
     <!-- ######## -->
 
     <!-- Privacy Policy -->
-    <GridPane fx:id="privacyPolicyGrid" visible="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <GridPane fx:id="privacyPolicyGrid" visible="false" GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <ScrollPane id="scrollPane">
+            <GridPane>
+                <ImageView fitWidth="950" fitHeight="3215">
+                    <Image url="@../../org.resources/privacy_policy_950x3335.png"/>
+                </ImageView>
+            </GridPane>
+        </ScrollPane>
+    </GridPane>
     <!-- ############## -->
 
 </GridPane>
