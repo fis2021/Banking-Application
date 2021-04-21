@@ -17,6 +17,7 @@ public class NotificationModel {
         this.currency = new SimpleStringProperty(currency);
         this.status = new SimpleStringProperty(status);
         this.amount = new SimpleDoubleProperty(amount);
+
     }
 
     public void setSenderName(String senderName) { this.senderName.set(senderName); }
