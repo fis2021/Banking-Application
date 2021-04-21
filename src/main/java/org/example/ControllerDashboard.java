@@ -8,6 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ControllerDashboard {
@@ -32,7 +36,15 @@ public class ControllerDashboard {
         //TODO add comment
     */
     public void handleDashboard() { changeSubMenu(dashboardGrid); }
-    public void handleNotifications() { changeSubMenu(notificationsGrid); }
+    public void handleNotifications() throws SQLException {
+        changeSubMenu(notificationsGrid);
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:src\\main\\resources\\database.db");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void handleDeposit() { changeSubMenu(depositGrid); }
     public void handleWithdraw() { changeSubMenu(withdrawGrid) ;}
     public void handleTransfer() { changeSubMenu(transferGrid); }
