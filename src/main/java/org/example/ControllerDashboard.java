@@ -36,15 +36,7 @@ public class ControllerDashboard {
         //TODO add comment
     */
     public void handleDashboard() { changeSubMenu(dashboardGrid); }
-    public void handleNotifications() throws SQLException {
-        changeSubMenu(notificationsGrid);
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:src\\main\\resources\\database.db");
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
+    public void handleNotifications() { changeSubMenu(notificationsGrid); }
     public void handleDeposit() { changeSubMenu(depositGrid); }
     public void handleWithdraw() { changeSubMenu(withdrawGrid) ;}
     public void handleTransfer() { changeSubMenu(transferGrid); }
