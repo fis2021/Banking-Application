@@ -4,11 +4,13 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class NotificationModel {
-    private SimpleStringProperty senderName, senderCardNumber, receiverName, receiverCardNumber, type, currency, status;
+    private SimpleStringProperty ownerPIN, senderName, senderCardNumber, receiverName, receiverCardNumber, type,
+            currency, status;
     private SimpleDoubleProperty amount;
 
-    public NotificationModel(String senderName, String senderCardNumber, String receiverName, String receiverCardNumber,
-                             String type, String currency, String status, double amount) {
+    public NotificationModel(String ownerPIN, String senderName, String senderCardNumber, String receiverName,
+                             String receiverCardNumber, String type, String currency, String status, double amount) {
+        this.ownerPIN = new SimpleStringProperty(ownerPIN);
         this.senderName = new SimpleStringProperty(senderName);
         this.senderCardNumber = new SimpleStringProperty(senderCardNumber);
         this.receiverName = new SimpleStringProperty(receiverName);
@@ -19,6 +21,8 @@ public class NotificationModel {
         this.amount = new SimpleDoubleProperty(amount);
 
     }
+
+    public void setOwnerPIN(String ownerPIN) { this.ownerPIN.set(ownerPIN); }
 
     public void setSenderName(String senderName) { this.senderName.set(senderName); }
 
@@ -35,6 +39,10 @@ public class NotificationModel {
     public void setStatus(String status) { this.status.set(status); }
 
     public void setAmount(double amount) { this.amount.set(amount); }
+
+    public String getOwnerPIN() { return ownerPIN.get(); }
+
+    public SimpleStringProperty ownerPINProperty() { return ownerPIN; }
 
     public String getSenderName() { return senderName.get(); }
 

@@ -5,11 +5,12 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class TransactionModel {
-    private SimpleStringProperty senderName, receiverName, type, currency, date;
+    private SimpleStringProperty ownerPIN, senderName, receiverName, type, currency, date;
     private SimpleDoubleProperty amount;
 
-    public TransactionModel (String senderName, String receiverName, String type, String currency, String date,
-                             double amount) {
+    public TransactionModel (String ownerPIN, String senderName, String receiverName, String type, String currency,
+                             String date, double amount) {
+        this.ownerPIN = new SimpleStringProperty(ownerPIN);
         this.senderName = new SimpleStringProperty(senderName);
         this.receiverName = new SimpleStringProperty(receiverName);
         this.type = new SimpleStringProperty(type);
@@ -17,6 +18,8 @@ public class TransactionModel {
         this.date = new SimpleStringProperty(date);
         this.amount = new SimpleDoubleProperty(amount);
     }
+
+    public void setOwnerPIN(String ownerPIN) { this.ownerPIN.set(ownerPIN); }
 
     public void setSenderName(String senderName) {
         this.senderName.set(senderName);
@@ -41,6 +44,10 @@ public class TransactionModel {
     public void setAmount(double amount) {
         this.amount.set(amount);
     }
+
+    public String getOwnerPIN() { return ownerPIN.get(); }
+
+    public SimpleStringProperty ownerPINProperty() { return ownerPIN; }
 
     public String getSenderName() {
         return senderName.get();
