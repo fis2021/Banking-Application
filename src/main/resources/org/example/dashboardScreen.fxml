@@ -532,7 +532,7 @@
         <ScrollPane id="scrollPane">
             <GridPane>
                 <ImageView fitWidth="950" fitHeight="3215">
-                    <Image url="@../../org.resources/privacy_policy_950x3335.png"/>
+                    <Image url="@../../org.resources/privacy_policy_950x3250.png"/>
                 </ImageView>
             </GridPane>
         </ScrollPane>

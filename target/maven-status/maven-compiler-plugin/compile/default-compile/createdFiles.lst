@@ -1,1 +1,7 @@
+org\example\TransactionModel.class
+org\example\User.class
 org\example\App.class
+org\example\User$AccountInformation.class
+org\example\User$BalanceInformation.class
+org\example\User$PersonalInformation.class
+org\example\NotificationModel.class
