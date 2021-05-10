@@ -45,7 +45,7 @@
         <PasswordField fx:id="repassword" promptText="Confirm Password" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
     </GridPane>
     <GridPane GridPane.rowIndex="4" GridPane.columnIndex="0" hgap="10">
-        <Button fx:id="register" text="REGISTER" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Button fx:id="register" text="REGISTER" GridPane.rowIndex="0" GridPane.columnIndex="0" onAction="#handleRegister"/>
         <Button fx:id="back" text="BACK" onAction="#handleBack" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
     </GridPane>
     <ImageView fitWidth="400" fitHeight="200" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.rowSpan="5">
