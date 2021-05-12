@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 
 import java.util.Objects;
 
+
 public class NotificationModel {
     private SimpleStringProperty ownerPIN, senderName, senderCardNumber, receiverName, receiverCardNumber, type,
             currency, status;

@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
 
+
 <GridPane fx:id="mainGrid" fx:controller="org.example.ControllerLogin" stylesheets="@../../org.styling/styleLogin.css"
           xmlns:fx="http://javafx.com/fxml" alignment="CENTER" vgap="10">
     <ImageView id="logo" GridPane.rowIndex="0" GridPane.columnIndex="0" fitWidth="400" fitHeight="200">

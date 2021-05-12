@@ -4,6 +4,7 @@
     -fx-pref-height: 720px;
 }
 
+
 #dashboardGrid, #notificationsGrid, #depositGrid, #withdrawGrid, #transferGrid, #privacyPolicyGrid {
     -fx-pref-width: 980px;
     -fx-pref-height: 720px;

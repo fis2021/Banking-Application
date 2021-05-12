@@ -2,6 +2,7 @@ package org.example;
 
 public class User {
 
+
     private final PersonalInformation personalInformation;
     private final AccountInformation accountInformation;
     private final BalanceInformation balanceInformation;

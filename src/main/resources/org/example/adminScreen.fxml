@@ -2,6 +2,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.Button?>
+
 <GridPane fx:id="mainGrid" fx:controller="org.example.ControllerAdmin" stylesheets="@../../org.styling/styleAdmin.css"
           xmlns:fx="http://javafx.com/fxml" alignment="CENTER" vgap="10">
     <TableView fx:id="transactionsTableView" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2">

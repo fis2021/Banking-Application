@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class ControllerAdmin {
     @FXML
     private TableView<TransactionModel> transactionsTableView;

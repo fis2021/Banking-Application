@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+
 public class Database {
     private final static String url = "jdbc:sqlite:src\\main\\resources\\database.db";
     private static Connection connection;
