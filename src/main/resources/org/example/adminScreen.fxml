@@ -1,0 +1,25 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<GridPane fx:id="mainGrid" fx:controller="org.example.ControllerAdmin" stylesheets="@../../org.styling/styleAdmin.css"
+          xmlns:fx="http://javafx.com/fxml" alignment="CENTER" vgap="10">
+    <TableView fx:id="transactionsTableView" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <columns>
+            <TableColumn fx:id="transactionType" text="TYPE" prefWidth="145"
+                         resizable="false" sortable="false"/>
+            <TableColumn fx:id="transactionEmitor" text="TO" prefWidth="145"
+                         resizable="false" sortable="false"/>
+            <TableColumn fx:id="transactionReceiver" text="FROM" prefWidth="145"
+                         resizable="false" sortable="false"/>
+            <TableColumn fx:id="transactionAmount" text="AMOUNT" prefWidth="145"
+                         resizable="false" sortable="false"/>
+            <TableColumn fx:id="transactionCurrency" text="CURRENCY" prefWidth="143"
+                         resizable="false" sortable="false"/>
+            <TableColumn fx:id="transactionDate" text="DATE" prefWidth="155" resizable="false" sortable="false"/>
+        </columns>
+    </TableView>
+
+    <Button fx:id="exit" text="EXIT" GridPane.rowIndex="1" GridPane.columnIndex="0" onAction="#handleExit"/>
+
+</GridPane>

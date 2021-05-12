@@ -84,6 +84,17 @@ public class NotificationModel {
             String senderPIN = Objects.requireNonNull(Database.getAllBalanceInformation()).get(index).getOwnerPIN();
 
             if(type.equals("Send")) {
+                   if(!Database.sendDeclineTransfer(senderPIN, ControllerDashboard.getLoggedInUser().getPersonalInformation().getPin(),
+                           amount, currency)) {
+                       System.out.println("Error3");
+                   }
+                   else {
+                       setResolved();
+                       accept.setVisible(false);
+                       decline.setVisible(false);
+                       if(!Database.setNotificationResolved(this))
+                           System.out.println("Error setting notification resolved");
+                   }
                 if(!Database.sendDeclineTransfer(senderPIN, ControllerDashboard.getLoggedInUser().getPersonalInformation().getPin(),
                         amount, currency)) {
                     System.out.println("Error3");
