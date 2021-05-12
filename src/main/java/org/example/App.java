@@ -8,22 +8,23 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class App extends Application {
 
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException, SQLException {
-        scene = new Scene(loadFXML("dashboardScreen"), 1280, 720);
+    public void start(Stage stage) throws IOException {
+        Database.initialize();
+        scene = new Scene(loadFXML("loginScreen"), 1280, 720);
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setTitle("Intellij Banking System");
         stage.show();
     }
+
+    @Override
+    public void stop() { Database.terminate(); }
 
     public static void changeScene(Button source, String fxml_file) throws IOException {
         ((Stage) source.getScene().getWindow()).setScene(new Scene(loadFXML(fxml_file), 1280, 720));
@@ -34,5 +35,4 @@ public class App extends Application {
     }
 
     public static void main(String[] args) { launch(); }
-
 }

@@ -29,14 +29,14 @@ public class User {
     public BalanceInformation getBalanceInformation() { return balanceInformation; }
 
     public final static class PersonalInformation {
-        private final String fname, lname, pin, birthday, gender, address, zip;
+        private final String fname, lname, pin, birthdate, gender, address, zip;
 
-        public PersonalInformation(String fname, String lname, String pin, String birthday,
+        public PersonalInformation(String fname, String lname, String pin, String birthdate,
                                    String gender, String address, String zip) {
             this.fname = fname;
             this.lname = lname;
             this.pin = pin;
-            this.birthday = birthday;
+            this.birthdate = birthdate;
             this.gender = gender;
             this.address = address;
             this.zip = zip;
@@ -50,13 +50,15 @@ public class User {
                 return false;
         }
 
+        public String getFullName() { return fname + " " + lname; }
+
         public String getFname() { return fname; }
 
         public String getLname() { return lname; }
 
         public String getPin() { return pin; }
 
-        public String getBirthday() { return birthday; }
+        public String getBirthdate() { return birthdate; }
 
         public String getGender() { return gender; }
 
@@ -97,18 +99,20 @@ public class User {
     }
 
     public final static class BalanceInformation {
+        private String ownerPIN;
         private double availableEUR, availableUSD, availableRON, awaitingEUR, awaitingUSD, awaitingRON,
                 totalWithdrawnEUR, totalWithdrawnUSD, totalWithdrawnRON, totalDepositedEUR, totalDepositedUSD,
                 totalDepositedRON, totalTransfersEUR, totalTransfersUSD, totalTransfersRON, totalWithdrawsEUR,
                 totalWithdrawsUSD, totalWithdrawsRON, totalDepositsEUR, totalDepositsUSD, totalDepositsRON;
 
-        public BalanceInformation(double availableEUR, double availableUSD, double availableRON, double awaitingEUR,
-                                  double awaitingUSD, double awaitingRON, double totalWithdrawnEUR,
+        public BalanceInformation(String ownerPIN, double availableEUR, double availableUSD, double availableRON,
+                                  double awaitingEUR, double awaitingUSD, double awaitingRON, double totalWithdrawnEUR,
                                   double totalWithdrawnUSD, double totalWithdrawnRON, double totalDepositedEUR,
                                   double totalDepositedUSD, double totalDepositedRON, double totalTransfersEUR,
                                   double totalTransfersUSD, double totalTransfersRON, double totalWithdrawsEUR,
                                   double totalWithdrawsUSD, double totalWithdrawsRON, double totalDepositsEUR,
                                   double totalDepositsUSD, double totalDepositsRON) {
+            this.ownerPIN = ownerPIN;
             this.availableEUR = availableEUR;
             this.availableUSD = availableUSD;
             this.availableRON = availableRON;
@@ -131,6 +135,8 @@ public class User {
             this.totalDepositsUSD = totalDepositsUSD;
             this.totalDepositsRON = totalDepositsRON;
         }
+
+        public String getOwnerPIN() { return ownerPIN; }
 
         public double getAvailableEUR() { return availableEUR; }
 
@@ -173,6 +179,51 @@ public class User {
         public double getTotalDepositsUSD() { return totalDepositsUSD; }
 
         public double getTotalDepositsRON() { return totalDepositsRON; }
+
+        public void setOwnerPIN(String ownerPIN) { this.ownerPIN = ownerPIN; }
+
+        public void setAvailableEUR(double availableEUR) { this.availableEUR = availableEUR; }
+
+        public void setAvailableUSD(double availableUSD) { this.availableUSD = availableUSD; }
+
+        public void setAvailableRON(double availableRON) { this.availableRON = availableRON; }
+
+        public void setAwaitingEUR(double awaitingEUR) { this.awaitingEUR = awaitingEUR; }
+
+        public void setAwaitingUSD(double awaitingUSD) { this.awaitingUSD = awaitingUSD; }
+
+        public void setAwaitingRON(double awaitingRON) { this.awaitingRON = awaitingRON; }
+
+        public void setTotalWithdrawnEUR(double totalWithdrawnEUR) { this.totalWithdrawnEUR = totalWithdrawnEUR; }
+
+        public void setTotalWithdrawnUSD(double totalWithdrawnUSD) { this.totalWithdrawnUSD = totalWithdrawnUSD; }
+
+        public void setTotalWithdrawnRON(double totalWithdrawnRON) { this.totalWithdrawnRON = totalWithdrawnRON; }
+
+        public void setTotalDepositedEUR(double totalDepositedEUR) { this.totalDepositedEUR = totalDepositedEUR; }
+
+        public void setTotalDepositedUSD(double totalDepositedUSD) { this.totalDepositedUSD = totalDepositedUSD; }
+
+        public void setTotalDepositedRON(double totalDepositedRON) { this.totalDepositedRON = totalDepositedRON; }
+
+        public void setTotalTransfersEUR(double totalTransfersEUR) { this.totalTransfersEUR = totalTransfersEUR; }
+
+        public void setTotalTransfersUSD(double totalTransfersUSD) { this.totalTransfersUSD = totalTransfersUSD; }
+
+        public void setTotalTransfersRON(double totalTransfersRON) { this.totalTransfersRON = totalTransfersRON; }
+
+        public void setTotalWithdrawsEUR(double totalWithdrawsEUR) { this.totalWithdrawsEUR = totalWithdrawsEUR; }
+
+        public void setTotalWithdrawsUSD(double totalWithdrawsUSD) { this.totalWithdrawsUSD = totalWithdrawsUSD; }
+
+        public void setTotalWithdrawsRON(double totalWithdrawsRON) { this.totalWithdrawsRON = totalWithdrawsRON; }
+
+        public void setTotalDepositsEUR(double totalDepositsEUR) { this.totalDepositsEUR = totalDepositsEUR; }
+
+        public void setTotalDepositsUSD(double totalDepositsUSD) { this.totalDepositsUSD = totalDepositsUSD; }
+
+        public void setTotalDepositsRON(double totalDepositsRON) { this.totalDepositsRON = totalDepositsRON; }
+
     }
 
 }

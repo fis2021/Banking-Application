@@ -187,7 +187,7 @@
                              resizable="false" sortable="false"/>
                 <TableColumn fx:id="transactionAmount" text="AMOUNT" prefWidth="145"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="transactionCurrency" text="CURRENCY" prefWidth="145"
+                <TableColumn fx:id="transactionCurrency" text="CURRENCY" prefWidth="143"
                              resizable="false" sortable="false"/>
                 <TableColumn fx:id="transactionDate" text="DATE" prefWidth="155" resizable="false" sortable="false"/>
             </columns>
@@ -202,18 +202,16 @@
         </padding>
         <TableView fx:id="notificationsTableView" prefHeight="680" GridPane.rowIndex="0" GridPane.columnIndex="0">
             <columns>
-                <TableColumn fx:id="notificationSenderName" text="FROM" prefWidth="125"
+                <TableColumn fx:id="notificationSenderName" text="FROM" prefWidth="145"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="notificationSubject" text="SUBJECT" prefWidth="125"
+                <TableColumn fx:id="notificationType" text="TYPE" prefWidth="145" resizable="false" sortable="false"/>
+                <TableColumn fx:id="notificationAmount" text="AMOUNT" prefWidth="145"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="notificationType" text="TYPE" prefWidth="125" resizable="false" sortable="false"/>
-                <TableColumn fx:id="notificationAmount" text="AMOUNT" prefWidth="125"
+                <TableColumn fx:id="notificationCurrency" text="CURRENCY" prefWidth="145"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="notificationCurrency" text="CURRENCY" prefWidth="125"
+                <TableColumn fx:id="notificationStatus" text="STATUS" prefWidth="145"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="notificationStatus" text="STATUS" prefWidth="125"
-                             resizable="false" sortable="false"/>
-                <TableColumn fx:id="notificationAction" text="ACTION" prefWidth="125"
+                <TableColumn fx:id="notificationAction" text="ACTION" prefWidth="145"
                              resizable="false" sortable="false"/>
             </columns>
         </TableView>
@@ -303,7 +301,8 @@
                         <String fx:value="EUR"/>
                     </value>
                 </ComboBox>
-                <Button fx:id="depositRequest" text="DEPOSIT" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Button fx:id="depositRequest" text="DEPOSIT" onAction="#handleDepositRequest"
+                        GridPane.rowIndex="2" GridPane.columnIndex="1"/>
             </GridPane>
         </GridPane>
         <GridPane hgap="20" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
@@ -404,7 +403,8 @@
                         <String fx:value="EUR"/>
                     </value>
                 </ComboBox>
-                <Button fx:id="withdrawRequest" text="WITHDRAW" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Button fx:id="withdrawRequest" text="WITHDRAW" onAction="#handleWithdrawRequest"
+                        GridPane.rowIndex="2" GridPane.columnIndex="1"/>
             </GridPane>
         </GridPane>
         <GridPane hgap="20" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
@@ -442,10 +442,14 @@
                 <Label id="fieldDepositWithdraw" text="PIN" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
                 <Label id="fieldDepositWithdraw" text="Email" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
                 <Label id="fieldDepositWithdraw" text="CardNumber" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-                <Label id="detailsFieldTransfer" text="Your Name" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Label id="detailsFieldTransfer" text="Your Pin" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                <Label id="detailsFieldTransfer" text="Your Email" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-                <Label id="detailsFieldTransfer" text="Your card number" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label fx:id="nameTransfer" id="detailsFieldTransfer" text="Your Name"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label fx:id="pinTransfer" id="detailsFieldTransfer" text="Your Pin"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label fx:id="emailTransfer" id="detailsFieldTransfer" text="Your Email"
+                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label fx:id="cardNumberTransfer" id="detailsFieldTransfer" text="Your card number"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
             </GridPane>
         </GridPane>
         <GridPane id="insideTransferGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" hgap="20">
@@ -505,11 +509,12 @@
                 <GridPane GridPane.rowIndex="2" GridPane.columnIndex="0" vgap="10" prefWidth="410" prefHeight="60" alignment="CENTER">
                     <RadioButton fx:id="requestTransfer" text="Request" toggleGroup="$transferType"
                                  GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                    <RadioButton fx:id="sendTRansfer" text="Send" toggleGroup="$transferType"
+                    <RadioButton fx:id="sendTransfer" text="Send" toggleGroup="$transferType"
                                  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
                 </GridPane>
 
-                <Button fx:id="transferRequest" text="TRANSFER" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Button fx:id="transferRequest" text="TRANSFER" onAction="#handleTransferRequest"
+                        GridPane.rowIndex="2" GridPane.columnIndex="1"/>
             </GridPane>
         </GridPane>
         <GridPane hgap="20" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">

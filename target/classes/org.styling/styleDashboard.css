@@ -74,11 +74,12 @@
 
 .table-view .table-cell {
     -fx-pref-height: 20px;
-    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-width: 0px 0px 1px 0px;
     -fx-border-color: rgb(20, 22, 27);
     -fx-text-fill: rgb(20, 22, 27);
     -fx-font-size: 13;
     -fx-font-weight: BOLD;
+    -fx-alignment: CENTER;
 }
 
 .table-view .column-header {

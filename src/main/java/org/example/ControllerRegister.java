@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class ControllerRegister {
     @FXML
@@ -102,13 +104,97 @@ public class ControllerRegister {
         });
     }
 
-    public Alert verifyData() {
-        //TODO
-        return null;
-    }
+    public void handleRegister() throws IOException {
+        // check if data is entered correctly
+        String errors = "";
+        if(fname.getText().length() < 3)
+            errors += "First name should be at least 3 characters long\n";
+        if(lname.getText().length() < 3)
+            errors += "Last name should be at least 3 characters long\n";
+        if(pin.getText().length() != 13)
+            errors += "PIN must be 13 characters long\n";
+        if(birthdate.getValue() == null)
+            errors += "Birthdate not selected\n";
+        else if(Period.between(birthdate.getValue(), LocalDate.now()).getYears() < 18)
+            errors += "User is underage\n";
+        if(!male.isSelected() && !female.isSelected())
+            errors += "Gender not selected\n";
+        if(address.getText().length() < 10)
+            errors += "Address field must be at least 10 characters long\n";
+        if(zip.getText().length() < 5)
+            errors += "ZIP must be at least 5 characters long\n";
+        if(cardnumber.getText().length() != 16)
+            errors += "Card Number must be 16 characters long\n";
+        if(!Database.checkIfEmailValid(email.getText()))
+            errors += "Email address is not valid\n";
 
-    public void handleRegister() {
-        //TODO
+        if(username.getText().length() < 5)
+            errors += "Length of username must be at least 5 characters\n";
+        char[] usernameCheck = username.getText().toCharArray();
+        boolean letterFound = false, numberFound = false, specCharFound = false;
+        for(char i : usernameCheck)
+            if(Character.isLetter(i))
+                letterFound = true;
+            else if(Character.isDigit(i))
+                numberFound = true;
+            else if("!#$%^&()*+,-./:;<=>?@~".contains(i + ""))
+                specCharFound = true;
+        if(!letterFound)
+            errors += "Username must contain at least a letter\n";
+        if(!numberFound)
+            errors += "Username must contain at least a number\n";
+        if(!specCharFound)
+            errors += "Username must contain at least a special character\n";
+
+        if(password.getText().length() < 10)
+            errors += "Length of password must be at least 10 characters\n";
+        char[] passwordCheck = password.getText().toCharArray();
+        letterFound = false; numberFound = false; specCharFound = false;
+        for(char i : passwordCheck)
+            if(Character.isLetter(i))
+                letterFound = true;
+            else if(Character.isDigit(i))
+                numberFound = true;
+            else if("!#$%^&()*+,-./:;<=>?@~".contains(i + ""))
+                specCharFound = true;
+        if(!letterFound)
+            errors += "Password must contain at least a letter\n";
+        if(!numberFound)
+            errors += "Password must contain at least a number\n";
+        if(!specCharFound)
+            errors += "Password must contain at least a special character\n";
+
+        if(!password.getText().equals(repassword.getText()))
+            errors += "Passwords do not match\n";
+
+        if(errors.isEmpty()) {
+            User.PersonalInformation personalInformation = new User.PersonalInformation(fname.getText(), lname.getText(),
+                    pin.getText(), birthdate.getValue().toString(), male.isSelected() ? "M" : "F", address.getText(),
+                    zip.getText());
+            User.AccountInformation accountInformation = new User.AccountInformation(cardnumber.getText(), email.getText(),
+                    username.getText(), Database.encodePasswordMD5(password.getText()));
+
+            Alert alert;
+            if(Database.registerUser(personalInformation, accountInformation)) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Registration successful");
+                alert.showAndWait();
+                handleBack();
+            }
+            else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("User already exists in the database");
+                alert.showAndWait();
+            }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Data fields entered incorrectly");
+            errors = errors.substring(0, errors.length() - 1);
+            alert.setContentText(errors);
+            alert.showAndWait();
+        }
+
     }
 
     public void handleBack() throws IOException { App.changeScene(back, "loginScreen"); }
