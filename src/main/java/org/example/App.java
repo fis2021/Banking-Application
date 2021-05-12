@@ -34,5 +34,6 @@ public class App extends Application {
         return new FXMLLoader(App.class.getResource(fxml + ".fxml")).load();
     }
 
+
     public static void main(String[] args) { launch(); }
 }
