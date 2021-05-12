@@ -1,5 +1,6 @@
 #mainGrid { -fx-background-color: rgb(42, 65, 88); }
 
+
 .table-view .table-cell {
     -fx-pref-height: 20px;
     -fx-border-width: 0px 0px 1px 0px;

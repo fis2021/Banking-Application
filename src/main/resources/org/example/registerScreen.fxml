@@ -6,6 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+
 <GridPane fx:id="mainGrid" fx:controller="org.example.ControllerRegister" vgap="10" hgap="220"
           stylesheets="@../../org.styling/styleRegister.css" xmlns:fx="http://javafx.com/fxml">
     <padding>

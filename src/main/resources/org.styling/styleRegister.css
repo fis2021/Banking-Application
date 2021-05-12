@@ -1,5 +1,6 @@
 #mainGrid { -fx-background-color: rgb(20, 22, 27); }
 
+
 #secondaryGrid {
     -fx-pref-width: 450px;
     -fx-background-color: white;

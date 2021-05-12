@@ -16,6 +16,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+
 <GridPane fx:id="mainGrid" fx:controller="org.example.ControllerDashboard"
           stylesheets="@../../org.styling/styleDashboard.css" xmlns:fx="http://javafx.com/fxml">
     <GridPane fx:id="secondaryGrid" hgap="10" GridPane.rowIndex="0" GridPane.columnIndex="0">
