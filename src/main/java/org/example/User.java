@@ -82,8 +82,8 @@ public class User {
         public boolean equals(Object object) {
             if(object instanceof AccountInformation)
                 return this.cardNumber.equals(((AccountInformation) object).cardNumber) ||
-                       this.email.equals(((AccountInformation) object).email) ||
-                       this.username.equals(((AccountInformation) object).username);
+                        this.email.equals(((AccountInformation) object).email) ||
+                        this.username.equals(((AccountInformation) object).username);
             else
                 return false;
         }

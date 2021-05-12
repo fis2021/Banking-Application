@@ -95,6 +95,17 @@ public class NotificationModel {
                        if(!Database.setNotificationResolved(this))
                            System.out.println("Error setting notification resolved");
                    }
+                if(!Database.sendDeclineTransfer(senderPIN, ControllerDashboard.getLoggedInUser().getPersonalInformation().getPin(),
+                        amount, currency)) {
+                    System.out.println("Error3");
+                }
+                else {
+                    setResolved();
+                    accept.setVisible(false);
+                    decline.setVisible(false);
+                    if(!Database.setNotificationResolved(this))
+                        System.out.println("Error setting notification resolved");
+                }
             }
             else {
                 setResolved();

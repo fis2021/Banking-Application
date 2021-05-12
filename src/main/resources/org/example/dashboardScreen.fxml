@@ -245,7 +245,7 @@
                 <Label fx:id="addressDeposit" id="detailsFieldDepositWithdraw" text="Your Address"
                        GridPane.rowIndex="3" GridPane.columnIndex="1"/>
                 <Label fx:id="cardNumberDeposit" id="detailsFieldDepositWithdraw" text="Your Card Number"
-                   GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
             </GridPane>
         </GridPane>
         <GridPane id="insideDepositWithdrawGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2">

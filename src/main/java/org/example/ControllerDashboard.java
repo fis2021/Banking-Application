@@ -39,6 +39,16 @@ public class ControllerDashboard {
           totalDepositsUSD, amountTotalDepositedUSD,
           ronAmountProfile, totalTransfersRON, amountAwaitingTransferRON, totalWithdrawsRON, amountTotalWithdrawnRON,
           totalDepositsRON, amountTotalDepositedRON;
+            nameWithdraw, pinWithdraw, addressWithdraw, cardNumberWithdraw,
+            nameTransfer, pinTransfer, emailTransfer, cardNumberTransfer;
+
+    @FXML
+    private Label eurAmountProfile, totalTransfersEUR, amountAwaitingTransferEUR, totalWithdrawsEUR, amountTotalWithdrawnEUR,
+            totalDepositsEUR, amountTotalDepositedEUR,
+            usdAmountProfile, totalTransfersUSD, amountAwaitingTransferUSD, totalWithdrawsUSD, amountTotalWithdrawnUSD,
+            totalDepositsUSD, amountTotalDepositedUSD,
+            ronAmountProfile, totalTransfersRON, amountAwaitingTransferRON, totalWithdrawsRON, amountTotalWithdrawnRON,
+            totalDepositsRON, amountTotalDepositedRON;
 
     @FXML
     private TableColumn<TransactionModel, String> transactionType, transactionEmitor, transactionReceiver, transactionCurrency,
@@ -100,10 +110,7 @@ public class ControllerDashboard {
         if(alert.getResult().getText().equals("Yes"))
             App.changeScene(logout, "loginScreen");
     }
-
-    /*
-
-    */
+  
     public void handleDepositRequest() {
         double sumToDeposit;
         try { sumToDeposit = Double.parseDouble(amountDeposit.getText()); }
@@ -121,10 +128,7 @@ public class ControllerDashboard {
         }
         amountDeposit.setText("");
     }
-
-    /*
-
-    */
+  
     public void handleWithdrawRequest() {
         double sumToWithdraw;
         try { sumToWithdraw = Double.parseDouble(amountWithdraw.getText()); }
@@ -172,9 +176,6 @@ public class ControllerDashboard {
         amountWithdraw.setText("");
     }
 
-    /*
-
-    */
     public void handleTransferRequest() {
         String errors = "";
         // Find user
@@ -190,6 +191,67 @@ public class ControllerDashboard {
                 else
                     index ++;
 
+    public void handleWithdrawRequest() {
+        double sumToWithdraw;
+        try { sumToWithdraw = Double.parseDouble(amountWithdraw.getText()); }
+        catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid amount");
+            alert.showAndWait();
+            return;
+        }
+        sumToWithdraw = ((double) ((int) (sumToWithdraw * 100)) / 100);
+        // check if funds are sufficient to effectuate a withdraw
+        switch (currencyWithdraw.getValue()) {
+            case "EUR":
+                if(loggedInUser.getBalanceInformation().getAvailableEUR() < sumToWithdraw) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setHeaderText("Insufficient funds");
+                    alert.showAndWait();
+                    return;
+                }
+                break;
+            case "USD":
+                if(loggedInUser.getBalanceInformation().getAvailableUSD() < sumToWithdraw) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setHeaderText("Insufficient funds");
+                    alert.showAndWait();
+                    return;
+                }
+                break;
+            case "RON":
+                if(loggedInUser.getBalanceInformation().getAvailableRON() < sumToWithdraw) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setHeaderText("Insufficient funds");
+                    alert.showAndWait();
+                    return;
+                }
+                break;
+        }
+
+        if(!Database.withdraw(loggedInUser, sumToWithdraw, currencyWithdraw.getValue())) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error uploading withdraw data to database");
+            alert.showAndWait();
+        }
+
+        amountWithdraw.setText("");
+    }
+
+    public void handleTransferRequest() {
+        String errors = "";
+        // Find user
+        ArrayList<User.PersonalInformation> pInfo = Database.getAllPersonalInformation();
+        boolean userFound = false;
+        int index = 0;
+        if(pInfo != null)
+            for(User.PersonalInformation i : pInfo)
+                if(i.getPin().equals(pinReceiverTransfer.getText()) && i.getFullName().equals(nameReceiverTransfer.getText())) {
+                    userFound = true;
+                    break;
+                }
+                else
+                    index ++;
         if(!userFound)
             errors += "User not found1\n";
         if(pinReceiverTransfer.getText().equals(loggedInUser.getPersonalInformation().getPin()))
@@ -212,6 +274,7 @@ public class ControllerDashboard {
         if(aInfo != null)
             if(!aInfo.get(index).getCardNumber().equals(cardnumReceiverTransfer.getText()) ||
                !aInfo.get(index).getEmail().equals(emailReceiverTransfer.getText()))
+                    !aInfo.get(index).getEmail().equals(emailReceiverTransfer.getText()))
                 errors += "User not found2\n";
 
         if(!errors.isEmpty()) {

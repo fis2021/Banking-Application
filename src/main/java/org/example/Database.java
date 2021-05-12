@@ -189,6 +189,7 @@ public class Database {
 
             statement.execute(String.format("INSERT INTO balanceInformation VALUES('%s', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0," +
                     " 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)",
+                            " 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)",
                     personalInformation.getPin()));
 
             return true;
@@ -337,6 +338,8 @@ public class Database {
             statement.execute(String.format("UPDATE notifications SET status='Resolved' WHERE ownerPIN='%s' AND" +
                     " senderName='%s' AND senderCardNumber='%s' AND receiverName='%s' AND receiverCardNumber='%s' AND " +
                     "type='%s' AND amount='%f' AND currency='%s'", notification.getOwnerPIN(), notification.getSenderName(),
+                            " senderName='%s' AND senderCardNumber='%s' AND receiverName='%s' AND receiverCardNumber='%s' AND " +
+                            "type='%s' AND amount='%f' AND currency='%s'", notification.getOwnerPIN(), notification.getSenderName(),
                     notification.getSenderCardNumber(), notification.getReceiverName(), notification.getReceiverCardNumber(),
                     notification.getType(), notification.getAmount(), notification.getCurrency()));
             return true;
